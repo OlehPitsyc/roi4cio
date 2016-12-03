@@ -1,0 +1,13 @@
+roi4cio\login\AddProductPage.class
+roi4cio\login\MyProducts.class
+Properties\TestResultListener.class
+roi4cio\login\LoginPage.class
+roi4cio\login\ROI4CIO.class
+roi4cio\add\product\MyOfficePage1.class
+roi4cio\add\product\MyProducts.class
+Properties\Browser.class
+Properties\IWebApp.class
+Properties\IWebAppTest.class
+roi4cio\login\MyOfficePage.class
+roi4cio\add\product\AddProductPage.class
+roi4cio\login\LoginIcon.class

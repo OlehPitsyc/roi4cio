@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="6" passed="6">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="83401" started-at="2016-12-02T23:02:23Z" finished-at="2016-12-02T23:03:46Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="83401" started-at="2016-12-02T23:02:23Z" finished-at="2016-12-02T23:03:46Z">
+      <class name="roi4cio.TestLoginPage">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="setUp" is-config="true" duration-ms="11708" started-at="2016-12-03T01:02:23Z" finished-at="2016-12-03T01:02:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="EmailAndPasswordFieldsAreEmpty()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="EmailAndPasswordFieldsAreEmpty" duration-ms="2876" started-at="2016-12-03T01:02:35Z" finished-at="2016-12-03T01:02:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EmailAndPasswordFieldsAreEmpty -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="tearDown" is-config="true" duration-ms="583" started-at="2016-12-03T01:02:38Z" finished-at="2016-12-03T01:02:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="setUp" is-config="true" duration-ms="9057" started-at="2016-12-03T01:02:38Z" finished-at="2016-12-03T01:02:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="EmailFieldIsEmpty()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="EmailFieldIsEmpty" duration-ms="3291" started-at="2016-12-03T01:02:47Z" finished-at="2016-12-03T01:02:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EmailFieldIsEmpty -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="tearDown" is-config="true" duration-ms="300" started-at="2016-12-03T01:02:50Z" finished-at="2016-12-03T01:02:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="setUp" is-config="true" duration-ms="8925" started-at="2016-12-03T01:02:51Z" finished-at="2016-12-03T01:03:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="InvalidInputDataForLogin()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="InvalidInputDataForLogin" duration-ms="3778" started-at="2016-12-03T01:03:00Z" finished-at="2016-12-03T01:03:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidInputDataForLogin -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="tearDown" is-config="true" duration-ms="253" started-at="2016-12-03T01:03:03Z" finished-at="2016-12-03T01:03:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="setUp" is-config="true" duration-ms="9317" started-at="2016-12-03T01:03:04Z" finished-at="2016-12-03T01:03:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="LogoutAfterLogin()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="LogoutAfterLogin" duration-ms="5269" started-at="2016-12-03T01:03:13Z" finished-at="2016-12-03T01:03:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LogoutAfterLogin -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="tearDown" is-config="true" duration-ms="245" started-at="2016-12-03T01:03:18Z" finished-at="2016-12-03T01:03:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="setUp" is-config="true" duration-ms="8865" started-at="2016-12-03T01:03:19Z" finished-at="2016-12-03T01:03:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="PasswordFieldIsEmpty()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="PasswordFieldIsEmpty" duration-ms="3398" started-at="2016-12-03T01:03:27Z" finished-at="2016-12-03T01:03:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PasswordFieldIsEmpty -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="tearDown" is-config="true" duration-ms="235" started-at="2016-12-03T01:03:31Z" finished-at="2016-12-03T01:03:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="setUp" is-config="true" duration-ms="9027" started-at="2016-12-03T01:03:31Z" finished-at="2016-12-03T01:03:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="ValidInputDataForlogin()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="ValidInputDataForlogin" duration-ms="5930" started-at="2016-12-03T01:03:40Z" finished-at="2016-12-03T01:03:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidInputDataForlogin -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:roi4cio.TestLoginPage@7c847072]" name="tearDown" is-config="true" duration-ms="250" started-at="2016-12-03T01:03:46Z" finished-at="2016-12-03T01:03:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- roi4cio.TestLoginPage -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
