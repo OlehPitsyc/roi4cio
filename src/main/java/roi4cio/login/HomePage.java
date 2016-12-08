@@ -5,14 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginIcon {
+public class HomePage {
 
 	private WebDriver driver;
 
 	@FindBy(className = "circular")
 	private WebElement loginLink;
+	
 
-	public LoginIcon(WebDriver driver) {
+
+	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
 	}
@@ -21,5 +23,7 @@ public class LoginIcon {
 		this.loginLink.click();
 		return new LoginPage(driver);
 	}
+	
+
 
 }

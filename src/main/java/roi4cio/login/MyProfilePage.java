@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MyOfficePage {
+public class MyProfilePage {
 
 	private WebDriver driver;
 
@@ -20,27 +20,42 @@ public class MyOfficePage {
 
 	@FindBy(xpath = "//*[@class='right menu']/a")
 	private WebElement myData;
+	
+	@FindBy (xpath = "//*[@class='home slider']")
+	private WebElement homeSlider;
 
-	public MyOfficePage(WebDriver driver) {
+	@FindBy(name = "submit")
+	private WebElement submitButton;
+
+	public MyProfilePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
 
 	}
 
-	public MyProducts goToMyProuctsPage() {
+	public MyProductsPage goToMyProductsPage() {
 		WebDriverWait waiter = new WebDriverWait(driver, 10);
 		waiter.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@href='moi-kabinet/moi-produkty/']")));
 		this.myPage.click();
-		return new MyProducts(driver);
+		return new MyProductsPage(driver);
 	}
 	
 	public void clickOnLogout(){
 		logout.click();
+		
+	}
+	
+	public boolean isHomeSliderDisplay(){
+		return homeSlider.isDisplayed();
+	}
+
+	public boolean isMyDataIconDisplayed(){
+		return myData.isDisplayed();
 	}
 	
 
-	public boolean myDataIsDisplayed(){
-		return myData.isDisplayed();
+	public boolean IsLoginButtonDisplayed() {
+		return submitButton.isDisplayed();
 	}
 
 }

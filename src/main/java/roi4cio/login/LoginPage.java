@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import loginData.UserModel;
 import roi4cio.add.product.MyOfficePage1;
 
 public class LoginPage {
@@ -29,11 +30,11 @@ public class LoginPage {
 		PageFactory.initElements(this.driver, this);
 	}
 
-	public MyOfficePage loginP(String emails, String pass) {
+	public MyProfilePage loginAs(String emails, String pass) {
 		login.sendKeys(emails);
 		password.sendKeys(pass);
 		submitButton.click();
-		return new MyOfficePage(driver);
+		return new MyProfilePage(driver);
 	}
 
 	public String error() {
@@ -41,11 +42,15 @@ public class LoginPage {
 
 	}
 
-	public boolean loginButtonIsDisplayed() {
+	public boolean IsLoginButtonDisplayed() {
 		return submitButton.isDisplayed();
 	}
 
 	public boolean loginFromForInputData() {
 		return loginForm.isDisplayed();
+	}
+
+	public MyProfilePage loginAs(UserModel user) {
+		return loginAs(user.getEmail(),user.getPassword());
 	}
 }

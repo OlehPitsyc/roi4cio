@@ -12,20 +12,14 @@ public class ROI4CIO {
 	private WebDriver driver;
 	private static final String baseUrl = "http://roi4cio.com/";
 
-	public ROI4CIO() {
-		PageFactory.initElements(this.driver, this);
-	}
-
-	public LoginIcon roi4cioHomePage() {
+	public HomePage openHomePage() {
 		driver = Browser.getDriver();
 		driver.get(baseUrl);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		return new LoginIcon(driver);
+		return new HomePage(driver);
 	}
-
 	public void close() {
 		if (this.driver != null)
-
 			this.driver.quit();
 		this.driver = null;
 	}

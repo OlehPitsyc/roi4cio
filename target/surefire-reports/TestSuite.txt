@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: TestSuite
--------------------------------------------------------------------------------
-Tests run: 17, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 324.061 sec <<< FAILURE! - in TestSuite
-testAddProductWithSameName(roi4cio.TestAddProduct)  Time elapsed: 7.124 sec  <<< FAILURE!
-java.lang.AssertionError: Product with the same title couldn't be created expected [false] but found [true]
-	at roi4cio.TestAddProduct.testAddProductWithSameName(TestAddProduct.java:52)
-

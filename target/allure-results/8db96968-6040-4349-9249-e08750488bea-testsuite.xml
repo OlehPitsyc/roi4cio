@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:test-suite start="1480848799328" stop="1480848893297" xmlns:ns2="urn:model.allure.qatools.yandex.ru">
+    <name>Default suite : Default test</name>
+    <title>Default suite : Default test</title>
+    <test-cases>
+        <test-case start="1480848811337" stop="1480848814221" status="passed">
+            <name>EmailAndPasswordFieldsAreEmpty</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="8976@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1480848823743" stop="1480848827086" status="passed">
+            <name>EmailFieldIsEmpty</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="8976@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1480848837347" stop="1480848840632" status="passed">
+            <name>InvalidInputDataForLogin</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="8976@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1480848852813" stop="1480848859371" status="passed">
+            <name>LogoutAfterLogin</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="8976@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1480848870092" stop="1480848873708" status="passed">
+            <name>PasswordFieldIsEmpty</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="8976@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1480848886954" stop="1480848893004" status="passed">
+            <name>ValidInputDataForlogin</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="8976@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+    </test-cases>
+    <labels>
+        <label name="framework" value="TestNG"/>
+        <label name="language" value="JAVA"/>
+    </labels>
+</ns2:test-suite>

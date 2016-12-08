@@ -12,6 +12,7 @@
     <classes>
       <class name="roi4cio.TestAddProduct">
         <methods>
+          <include name="testAddProductConfirmationPopup"/>
           <include name="tearDown"/>
           <include name="setUp"/>
           <include name="testAddProductWithSameName"/>
@@ -21,6 +22,7 @@
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="ValidInputDataForlogin"/>
         </methods>
       </class> <!-- roi4cio.TestLoginPage -->
     </classes>
