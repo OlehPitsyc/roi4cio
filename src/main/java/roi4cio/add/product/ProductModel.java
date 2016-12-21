@@ -1,34 +1,36 @@
 package roi4cio.add.product;
 
+import java.util.List;
+
 public class ProductModel {
 	private final String title;
-	
-	private final String category;
-	
-	private final String deliveryType;
 
-	public ProductModel(String title, String deliveryType, String category) {
+	private final List<String> deliveryType;
+
+	private final List<String> category;
+
+	public ProductModel(String title, List<String> deliveryType, List<String> category) {
 		super();
 		this.title = title;
-		this.category = category;
 		this.deliveryType = deliveryType;
+		this.category = category;
 	}
 
 	public String getTitle() {
 		return title;
 	}
-
-	public String getCategory() {
-		return category;
+	
+	public List<String> getDeliveryType() {
+		return deliveryType;
 	}
 
-	public String getDeliveryType() {
-		return deliveryType;
+	public List<String> getCategory() {
+		return category;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductModel [title=" + title + ", category=" + category + ", deliveryType=" + deliveryType + "]";
+		return "ProductModel [title=" + title + ",deliveryType=" + deliveryType + ",category=" + category + "]";
 	}
 
 	@Override
@@ -67,7 +69,5 @@ public class ProductModel {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

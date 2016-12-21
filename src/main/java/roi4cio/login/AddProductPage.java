@@ -28,26 +28,23 @@ public class AddProductPage {
 	@FindBy(xpath = "(//*[@tabindex='0'])[4]")
 	private WebElement category;
 
-	@FindBy(css = "div[class =item]")
+	@FindBy(css = ".menu.three-column.transition.visible >.item")
 	private List<WebElement> selectCategory;
 
 	@FindBy(xpath = "(//*[@type='checkbox'])[1]")
 	private WebElement toggle;
-	
+
 	@FindBy(xpath = "//*[@class='ui toggle checkbox']")
 	private List<WebElement> delivery;
+
+	@FindBy(css = ".ui.toggle.checkbox input[type='checkbox']")
+	private List<WebElement> deliveryCheckBoxList;
 
 	@FindBy(id = "pr-short")
 	private WebElement shourtDescription;
 
-	@FindBy(xpath = "(//*[@type='checkbox'])[2]")
-	private WebElement toggle1;
-
 	@FindBy(xpath = "//button[@type = 'submit']")
 	private WebElement save;
-
-	@FindBy(xpath = "//*[@data-value='1']")
-	private WebElement category1;
 
 	@FindBy(xpath = ("//*[@class='two fields']"))
 	private WebElement errorMessageOnCreateProductPage;
@@ -79,6 +76,8 @@ public class AddProductPage {
 	}
 
 	public void selectDeliveryType() {
+//		WebDriverWait waiter = new WebDriverWait(driver, 10);
+//		waiter.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".ui.corner.labeled.input>#pr-short")));
 		toggle.click();
 	}
 
@@ -95,9 +94,21 @@ public class AddProductPage {
 		return errorMessageOnCreateProductPage.getText();
 	}
 
-	public void clickOnTwoToggle() {
-		toggle.click();
-		toggle1.click();
+	private List<String> getValueDeliveryType() {
+		return delivery.stream().map(e -> e.getText()).collect(Collectors.toList());
+	}
+
+	public void selectDeliveryType(List<String> delivery) {
+		List<String> deliveryValue = getValueDeliveryType();
+		for (String findElementDelivery : delivery) {
+			if (delivery.isEmpty()) {
+				break;}
+			else {
+				int index = deliveryValue.indexOf(findElementDelivery );
+				deliveryCheckBoxList.get(index).click();
+				break;
+			}
+		}
 	}
 
 	public void clickOnCategory() {
@@ -110,31 +121,18 @@ public class AddProductPage {
 		return selectCategory.stream().map(e -> e.getText()).collect(Collectors.toList());
 	}
 
-	public void selectValueFromDropdawnCategory(String string) {
-		String[] value = string.split(" ");
-		// String [] value = ;
-		List<String> valueInDropdownCategory = getValueFromDropdawnCategoty();
+	public void selectValueFromDropdawnCategory(List<String> categoria) {
+		List<String> valuesInCategoryDropdown = getValueFromDropdawnCategoty();
+		for (String ñategoryDropdown : categoria) {
+			if (categoria.isEmpty()) {
+				break;
+			} else {
+				int index = valuesInCategoryDropdown.indexOf(ñategoryDropdown);
+				selectCategory.get(index).click();
+				break;
 
-		for (String categoryValue : value) {
-			int index = valueInDropdownCategory.indexOf(categoryValue);
-			selectCategory.get(index).click();
+			}
 		}
-	}
-
-	private List<String> getValueDeliveryType() {
-		return delivery.stream().map(e -> e.getText()).collect(Collectors.toList());
-	}
-
-	public void selectDeliveryTepe(String string) {
-		String[] value = string.split(" ");
-		// String [] value = ;
-		List<String> valueDelivery = getValueDeliveryType();
-
-		for (String deliveryValue : value) {
-			int index = valueDelivery.indexOf(deliveryValue);
-			delivery.get(index).click();
-		}
-
 	}
 
 	public boolean myProductsList() {
@@ -172,12 +170,11 @@ public class AddProductPage {
 		return englishAddProductPage.isDisplayed();
 	}
 
-	public void addAroduct(ProductModel filledallmandatoryfields) {
+	public void addProduct(ProductModel filledallmandatoryfields) {
 		titleOfProduct.sendKeys(filledallmandatoryfields.getTitle());
-		selectDeliveryTepe(filledallmandatoryfields.getDeliveryType());
+		selectDeliveryType(filledallmandatoryfields.getDeliveryType());
 		category.click();
 		selectValueFromDropdawnCategory(filledallmandatoryfields.getCategory());
-		
 
 	}
 }

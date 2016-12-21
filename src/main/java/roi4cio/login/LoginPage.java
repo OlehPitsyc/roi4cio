@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import loginData.UserModel;
-import roi4cio.add.product.MyOfficePage1;
 
 public class LoginPage {
 	private WebDriver driver;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:test-suite start="1482190366305" stop="1482190424486" xmlns:ns2="urn:model.allure.qatools.yandex.ru">
+    <name>Default suite : Default test</name>
+    <title>Default suite : Default test</title>
+    <test-cases>
+        <test-case start="1482190377475" stop="1482190398133" status="passed">
+            <name>verifyQuantityOfProducts</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="2620@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1482190408909" stop="1482190424468" status="passed">
+            <name>verifyQuantityOfSolutions</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="host" value="DESKTOP-HEOVU1M"/>
+                <label name="thread" value="2620@DESKTOP-HEOVU1M.main(1)"/>
+            </labels>
+        </test-case>
+    </test-cases>
+    <labels>
+        <label name="framework" value="TestNG"/>
+        <label name="language" value="JAVA"/>
+    </labels>
+</ns2:test-suite>

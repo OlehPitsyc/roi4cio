@@ -1,8 +1,11 @@
 package roi4cio;
 
 import static loginData.Users.VALID_USER;
-import static roi4cio.add.product.ProductModel.*;
-import static roi4cio.add.product.TestData.*;
+import static roi4cio.add.product.TestData.CategoryAndDeliveryAreEmpty;
+import static roi4cio.add.product.TestData.CategoryIsEmpty;
+import static roi4cio.add.product.TestData.EmptyMandatoryFields;
+import static roi4cio.add.product.TestData.FilledAllMandatoryFields;
+import static roi4cio.add.product.TestData.ProductWithNewTitle;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -14,6 +17,7 @@ import roi4cio.login.AddProductPage;
 import roi4cio.login.MyProductsPage;
 import roi4cio.login.MyProfilePage;
 import roi4cio.login.ROI4CIO;
+
 public class TestAddProduct {
 
 	private ROI4CIO roi = new ROI4CIO();
@@ -23,113 +27,86 @@ public class TestAddProduct {
 	private AddProductPage addProductPage;
 	private ProductModel testProduct;
 
+	private String someError = "Некоторые ошибки";
+	private String productNameError = "\nПродукт с таким именем уже существует";
+	private String categoryError = "\nКатегория продукта: Задано пустое значение.";
+	private String deliveryError = "\nТип поставки: Задано пустое значение.";
+	private String productEmptyError = "\nНазвание: Задано пустое значение.";
+	private String countryError = "\nСтрана: Задано пустое значение.";
+
 	@BeforeMethod
 	private void setUp() {
 		myProfilePage = roi.openHomePage().clickOnLoginIcon().loginAs(VALID_USER);
-		testProduct = generateProduct();
+		testProduct = FilledAllMandatoryFields;
 	}
-
-	private ProductModel generateProduct() {
-		return new ProductModel("Soap", "Desktop virtualization", "Appliance");
-	}
-
 
 	@Test(priority = 1)
 	public void testAddProduct() {
 		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
-//		addProductPage.addTitleForProduct("svf", "The Best product in whole");
-//		addProductPage.selectDeliveryType();
-//		addProductPage.clickOnCategory();
-//		myProductsPage = addProductPage.save();
-//		try {
-//			Thread.sleep(5000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		Assert.assertTrue(myProductsPage.productNameList().contains("svf"));
-//		// Assert.assertTrue(addProductPage.myProductsList());
-
-		addProductPage.addAroduct(FilledAllMandatoryFields);
+		addProductPage.addProduct(FilledAllMandatoryFields);
 		addProductPage.save();
-		//Assert.assertTrue(myProductsPage.productNameList().contains(testProduct));
+		Assert.assertTrue(myProductsPage.productNameList().contains(testProduct));
 	}
 
 	@Test(priority = 2)
 	public void testAddProductWithSameName() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct(" svf ", "The Best product in whole");
-		addProductPage.selectDeliveryType();
-		addProductPage.clickOnCategory();
-		addProductPage.clickSaveButton();
-		Assert.assertFalse(addProductPage.myProductsList(), "Product with the same title couldn't be created");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(testProduct);
+		addProductPage.save();
+		Assert.assertEquals(addProductPage.textErrorMessage(), someError + productNameError,
+				"Product with the same title couldn't be created");
 	}
 
 	@Test
 	public void testAddProductWithEmptyCategory() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct(" svf ", "The Best product in whole");
-		addProductPage.selectDeliveryType();
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(CategoryIsEmpty);
 		addProductPage.clickSaveButton();
-		Assert.assertEquals(addProductPage.textErrorMessage(),
-				"Некоторые ошибки" + "\nКатегория продукта: Задано пустое значение.");
+		Assert.assertEquals(addProductPage.textErrorMessage(), someError + categoryError);
 
 	}
 
 	@Test
 	public void testAddPdocutWithEmptyDeliveryAndCategory() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct(" svf ", "The Best product in whole");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(CategoryAndDeliveryAreEmpty);
 		addProductPage.clickSaveButton();
-		Assert.assertEquals(addProductPage.textErrorMessage(), "Некоторые ошибки"
-				+ "\nТип поставки: Задано пустое значение." + "\nКатегория продукта: Задано пустое значение.");
+		Assert.assertEquals(addProductPage.textErrorMessage(), someError + deliveryError + categoryError);
 	}
 
 	@Test
 	public void testAddProductWithEmptyMandatoryFields() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct(" ", " ");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(EmptyMandatoryFields);
 		addProductPage.clickSaveButton();
 		Assert.assertEquals(addProductPage.textErrorMessage(),
-				"Некоторые ошибки" + "\nНазвание: Задано пустое значение." + "\nТип поставки: Задано пустое значение."
-						+ "\nКатегория продукта: Задано пустое значение.");
+				someError + productEmptyError + deliveryError + categoryError);
 	}
 
 	@Test
 	public void testAddProductWithoutCountry() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct(" svf14 ", "The Best product in whole");
-		addProductPage.selectDeliveryType();
-		addProductPage.clickOnCategory();
-		addProductPage.selectValueFromDropdawnCategory("Безопасность");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(ProductWithNewTitle);
 		addProductPage.selectCountry();
-		//addProductPage.clickSaveButton();
-		Assert.assertEquals(addProductPage.textErrorMessage(),
-				"Некоторые ошибки" + "\nСтрана: Задано пустое значение.");
+		addProductPage.save();
+		Assert.assertEquals(addProductPage.textErrorMessage(), someError + countryError);
 	}
 
 	@Test
 	public void testAddProductWithEmptyAllFields() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct(" ", " ");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(EmptyMandatoryFields);
 		addProductPage.selectCountry();
 		addProductPage.clickSaveButton();
 		Assert.assertEquals(addProductPage.textErrorMessage(),
-				"Некоторые ошибки" + "\nНазвание: Задано пустое значение." + "\nСтрана: Задано пустое значение."
-						+ "\nТип поставки: Задано пустое значение." + "\nКатегория продукта: Задано пустое значение.");
+				someError + productEmptyError + countryError + deliveryError + categoryError);
 	}
 
 	@Test
 	public void testAddProductConfirmationPopup() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct("Test ", " ");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(testProduct);
+		;
 		addProductPage.selectCountry();
 		addProductPage.clickOnFlag();
 		Assert.assertTrue(addProductPage.Popup());
@@ -137,9 +114,8 @@ public class TestAddProduct {
 
 	@Test
 	public void testAddProductCickOnYesInConfirmationPopup() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct("Test ", " ");
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(testProduct);
 		addProductPage.selectCountry();
 		addProductPage.clickOnFlag();
 		addProductPage.clickOnYesButton();
@@ -147,10 +123,9 @@ public class TestAddProduct {
 	}
 
 	@Test
-	public void testAddProductCickOnYesInConfirmationPopupAfterErrors() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
-		addProductPage.addTitleForProduct("Test ", " ");
+	public void testAddProductClickOnYesInConfirmationPopupAfterErrors() {
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
+		addProductPage.addProduct(testProduct);
 		addProductPage.clickSaveButton();
 		try {
 			Thread.sleep(2500);
@@ -166,31 +141,21 @@ public class TestAddProduct {
 
 	@Test
 	public void testAddProductWithFilledAllFields() {
-		myProductsPage = myProfilePage.goToMyProductsPage();
-		addProductPage = myProductsPage.addProduct();
+		addProductPage = myProfilePage.goToMyProductsPage().addProduct();
 		addProductPage.addTitleForProduct(" ", " ");
 		addProductPage.clickSaveButton();
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		addProductPage.addTitleForProduct(" TEST1 ", "The Best product in whole");
-		addProductPage.selectDeliveryType();
-		addProductPage.clickOnCategory();
-		addProductPage.clickSaveButton();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assert.assertTrue(addProductPage.myProductsList());
+		addProductPage.addProduct(ProductWithNewTitle);
+		addProductPage.save();
+		Assert.assertTrue(myProductsPage.productNameList().contains(ProductWithNewTitle));
 	}
 
-//	@AfterMethod(alwaysRun = true)
-//	public void tearDown() {
-//		roi.close();
-//	}
+	@AfterMethod(alwaysRun = true)
+	public void tearDown() {
+		roi.close();
+	}
 }
